@@ -14,3 +14,4 @@ LazyData: true
 Imports: 
     knitr,
     subprocess
+RoxygenNote: 7.0.2
