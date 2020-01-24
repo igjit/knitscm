@@ -1,0 +1,7 @@
+version: "3"
+services:
+  r:
+    image: rocker/tidyverse:3.6.2
+    volumes:
+      - .:/opt/work
+    working_dir: /opt/work
