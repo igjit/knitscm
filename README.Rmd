@@ -18,37 +18,34 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of knitscm is to ...
+A [knitr](https://github.com/yihui/knitr) engine for Scheme
 
 ## Installation
 
-You can install the released version of knitscm from [CRAN](https://CRAN.R-project.org) with:
+You can install the development version of knitscm from [GitHub](https://github.com/) with:
 
 ``` r
-install.packages("knitscm")
+# install.packages("remotes")
+remotes::install_github("igjit/knitscm")
 ```
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
-
-```{r example}
+````markdown
+`r ''````{r setup, include=FALSE}
 library(knitscm)
-## basic example code
+handle <- run_gauche()
+knitr::opts_chunk$set(handle = handle)
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r cars}
-summary(cars)
+`r ''````{scm results=FALSE}
+(define (fact n)
+  (if (= n 1)
+      1
+      (* n (fact (- n 1)))))
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
+`r ''````{scm}
+(fact 5)
 ```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!
+````
