@@ -32,6 +32,8 @@ start_repl <- function(...) {
 }
 
 scheme_engine <- function(options) {
+  if (!options$eval) return(knitr::engine_output(options, options$code, ""))
+
   subprocess::process_write(options$handle, paste(options$code, collapse = "\n"))
   # FIXME
   if (length(options$code) > 1) Sys.sleep(0.1)
